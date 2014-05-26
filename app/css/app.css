@@ -1,0 +1,59 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700|Satisfy);
+/* app css stylesheet */
+
+
+.page {
+  width: 99%;
+  height: 98%;
+  position: absolute;  
+  overflow: hidden;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.page h1  { font-size:60px; }
+.page a     { margin-top:50px; }
+
+.page.ng-leave  { z-index:9999;}
+.page.ng-enter  { z-index:8888; }
+
+.page.ng-enter     {  
+  -webkit-transform-origin: 50% 100%;
+  -webkit-animation: rotateCubeBottomIn 1s both ease-in;
+  -moz-animation: rotateCubeLeftIn 0.5s both ease-in;
+  animation: rotateCubeLeftIn 0.5s both ease-in;    
+}
+
+.page.ng-leave {  
+  -webkit-transform-origin: 50% 0%;
+  -webkit-animation: rotateCubeBottomOut 1s both ease-in;  
+  -moz-animation: rotateCubeLeftOut 1s both ease-in;
+  animation: rotateCubeLeftOut 1s both ease-in;
+}
+
+.view1    { background:#00D0BC; color:#00907c; }
+.view2   { background:#E59400; color:#a55400; }
+
+html, body { 
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  color: #fff;
+  background: #333;
+  overflow: hidden;
+}
+
+.pt-perspective {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-perspective: 1200px;
+  -moz-perspective: 1200px;
+  perspective: 1200px;
+}
