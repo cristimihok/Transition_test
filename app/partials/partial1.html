@@ -1,4 +1,23 @@
 <div>
-	<p>This is the partial for view 1.</p>
-	<button ng-click="changePage()">CHANGE</button>
+	<div class="container">
+		<div class="row">
+			<p>This is the partial for view 1.</p>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-2">
+				<button class="btn btn-primary" ng-click="changePage()">CHANGE</button>
+			</div>
+		</div>
+
+		<div id="owl-example" class="owl-carousel row" style="margin-top: 200px">
+		    <div ng-repeat="number in [1,2,3,4,5,6]"> asd{{number}}</div>
+		<!--     <div> Your Content 2</div>
+		    <div> Your Content 3</div>
+		    <div> Your Content 4</div>
+		    <div> Your Content 5</div>
+		    <div> Your Content 6</div>
+		    <div> Your Content 7</div> -->
+		  </div>
+	</div>
 </div>
