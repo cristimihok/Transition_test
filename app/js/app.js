@@ -23,6 +23,10 @@ angular.module('myApp', ['ngRoute', 'ngAnimate', 'myApp.filters', 'myApp.service
 	.otherwise({
 		redirectTo: '/view1'
 	});
+
+	$('.st-pusher .st-over-layer').click(function(){
+		$('#st-container').removeClass('st-menu-open');
+	})
 });
 
 
