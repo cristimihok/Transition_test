@@ -9,18 +9,19 @@
 	<title>my angular app</title>
 
 	<!-- NORMALIZE CSS -->
-	<link rel="stylesheet" href="css/SidebarTransitions/css/normalize.css">
+	<link rel="stylesheet" href="css/normalize.css">
 
 	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="css/Bootstrap/bootstrap.css" />
 	<link rel="stylesheet" href="css/Bootstrap/bootstrap-theme.css" />
 
 	<!-- PAGE TRANSITION CSS -->
-	<link rel="stylesheet" href="css/PageTransitions/animations.css" />
+	<!-- <link rel="stylesheet" href="css/PageTransitions/animations.css" /> -->
+	<link rel="stylesheet" href="css/PageTransitions/page.cube.transition.css" />
 
 	<!-- SIDEBAR CSS-->
-	<link rel="stylesheet" href="css/SidebarTransitions/css/component.css" />
-	<link rel="stylesheet" href="css/SidebarTransitions/css/icons.css" />
+	<link rel="stylesheet" href="css/SidebarTransitions/sidebar.scale.rotate.css" />
+	<link rel="stylesheet" href="css/SidebarTransitions/icons.css" />
 
 
 	<!-- OWL CAROUSEL CSS -->
@@ -35,7 +36,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
 	<!-- OWL CAROUSEL -->
-	<script src="js/owl.carousel.js"></script>
+	<script src="lib/owl.carousel.js"></script>
 
 	<!-- ANGULAR -->
 	<script src="lib/angular/angular.js"></script>
@@ -62,35 +63,36 @@
 
 <body ng-controller="MainCtrl">
 
-  <div id="st-container" class="st-container st-effect-11">
+  	<div id="st-container" class="st-container st-effect-11">
 
-    <!-- Sidebar -->
-    <nav class="st-menu st-effect-11" id="menu-1">
-		<h2 class="icon icon-lab">Sidebar</h2>
-		<div class="st-menu-label" ng-click="toggleMenu()">Menu label</div>
-		<ul>
-			<li><a class="icon icon-data" href="#/view1">Data Management</a></li>
-			<li><a class="icon icon-location" href="#view2">Location</a></li>
-			<li><a class="icon icon-study" href="#">Study</a></li>
-			<li><a class="icon icon-photo">Collections</a></li>
-			<li><a id="st-close-menu" ng-click="toggleMenu()" href="#view2" class="icon icon-wallet">Close Menu</a></li>
-		</ul>
-    </nav>
+	    <!-- Sidebar -->
+	    <nav class="st-menu st-effect-11" id="menu-1" ng-mouseenter="openMenu1()" ng-mouseleave="closeMenu1()">
+	    	<div class="st-menu-label" ng-click="toggleMenu()">
+				<span class="icon icon-arrow-right-3"></span>
+			</div>
+	    	<div class="st-menu-inner">
+				<h2 class="">MENU</h2>
 
-    <!-- Pusher after sidebar -->
-    <div class="st-pusher">
-      <!-- <div class="st-content"> --><!-- this is the wrapper for the content -->
-       <!--  <div class="st-content-inner"> --><!-- extra div for emulating position:fixed of the menu -->
-            <!-- Main content -->
-            <div class="pt-perspective">
-              <div ng-view class="page {{cls}} "></div>
-            </div>
+				<ul>
+					<li ng-repeat="item in menuItems">
+						<a ng-class="item.class" ng-href="{{item.href}}">{{item.name}}</a>
+					</li>
+					<li><a id="st-close-menu" ng-click="toggleMenu()" href="#view2" class="icon icon-wallet">Close Menu</a></li>
+				</ul>
+			</div>
+	    </nav>
 
-        <!-- </div>
-      </div> -->
-    </div>
+	    <!-- Pusher after sidebar -->
+	    <div class="st-pusher">
 
-  </div>
+	            <!-- Main content -->
+	            <div class="pt-perspective">
+	              <div ng-view class="view pt-page-rotateCubeTopOut pt-page-rotateCubeTopIn"></div>
+	            </div>
+
+	    </div>
+
+  	</div>
 
 </body>
 </html>

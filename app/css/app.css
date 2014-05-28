@@ -1,8 +1,25 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700|Satisfy);
 /* app css stylesheet */
 
+/**,
+*:after,
+*::before {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*/
+html, body { 
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  color: #fff;
+  background: #333;
+  overflow: hidden;
+  padding: 5px;
+  height: 100%;
+}
 
-.page {
+/* Views  */
+
+.view {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -21,43 +38,8 @@
   transform-style: preserve-3d;
 }
 
-.page h1  { font-size:60px; }
-.page a     { margin-top:50px; }
-
-.page.ng-leave  { z-index:9999;}
-.page.ng-enter  { z-index:8888; }
-
-.page.ng-enter     {
-  -webkit-transform-origin: 50% 0%;
-  -webkit-animation: rotateCubeTopIn .6s both ease-in;
-  -moz-transform-origin: 50% 0%;
-  -moz-animation: rotateCubeTopIn .6s both ease-in;
-  transform-origin: 50% 0%;
-  animation: rotateCubeTopIn .6s both ease-in;
-}
-
-.page.ng-leave {
-  -webkit-transform-origin: 50% 100%;
-  -webkit-animation: rotateCubeTopOut .6s both ease-in;
-  -moz-transform-origin: 50% 100%;
-  -moz-animation: rotateCubeTopOut .6s both ease-in;
-  transform-origin: 50% 100%;
-  animation: rotateCubeTopOut .6s both ease-in;
-}
-
-/*.view1    { background:#00D0BC; color:#00907c; }
-.view2   { background:#E59400; color:#a55400; }*/
-
-html, body { 
-  font-family: 'Lato', Calibri, Arial, sans-serif;
-  color: #fff;
-  background: #333;
-  overflow: hidden;
-  padding: 5px;
-}
-
 .pt-perspective {
-  position: fixed;
+  position: relative;
   width: 100%;
   height: 100%;
   -webkit-perspective: 1200px;
@@ -65,17 +47,27 @@ html, body {
   perspective: 1200px;
 }
 
-div .st-menu-label {
-  position: relative;
-  padding: 2px;
-  padding-left: 15px;
-  height: 30px;
-  width: 98px;
-  left: 292px;
-  top: -20px;
-  visibility: visible;
- /* background: inherit;*/
-  border-radius: 10px;
-  cursor: pointer;
-  border: solid 3px;
+
+/* Vertical offsets */
+
+.voffset-lg-1 {
+  margin-top: 5%;
 }
+
+.voffset-lg-2 {
+  margin-top: 10%;
+}
+
+.voffset-lg-3 {
+  margin-top: 15%;
+}
+
+.voffset-lg-4 {
+  margin-top: 20%;
+}
+
+.voffset-lg-5 {
+  margin-top: 30%;
+}
+
+
