@@ -27,6 +27,12 @@ angular.module('myApp', ['ngRoute', 'ngAnimate', 'myApp.filters', 'myApp.service
 	$('.st-pusher .st-over-layer').click(function(){
 		$('#st-container').removeClass('st-menu-open');
 	})
+
+	LeapManager.init({
+		maxCursors:5,
+		enableMetaGestures: true,
+		enableDefaultMetaGestureActions: true
+	});
 });
 
 

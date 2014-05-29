@@ -38,6 +38,10 @@ angular.module('myApp.controllers', [])
 		$('#st-container').addClass('st-menu-open');
 	}
 
+	$scope.leapClick = function () {
+		console.log('LEAP CLICK');
+	}
+
 	setTimeout(function () {
 		$("#owl-example").owlCarousel({
 			items: 1,
