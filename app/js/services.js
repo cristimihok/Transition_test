@@ -10,9 +10,9 @@ angular.module('myApp.services')
 .factory('LeapService', function ($rootScope) {
 	// var leapCtrl = new Leap.Controller({enableGestures: true});
 	// leapCtrl.connect();
-	
+
 	var gestureInProgress = false;
-	
+
 	var leapCtrl = LeapManager.init({
 		maxCursors:1,
 		enableMetaGestures: false,
@@ -25,9 +25,8 @@ angular.module('myApp.services')
 	    //console.log(gesture);
 
 	    if (!gestureInProgress) {
-	    	
 
-		    if (gesture.type === 'swipe') {		    	
+		    if (gesture.type === 'swipe') {
 		    	gestureInProgress = true;
 		    	console.log(gesture);
 		    	var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
@@ -44,7 +43,7 @@ angular.module('myApp.services')
 						swipeDirection = "up";
 					} else {
 						swipeDirection = "down";
-					}                  
+					}
 				}
 				console.log(swipeDirection);
 				$rootScope.$broadcast('leap-swipe-' + swipeDirection);
@@ -77,16 +76,26 @@ angular.module('myApp.services')
 .factory('MenuService', function ($location) {
 	var menuDom = angular.element('#st-container');
 	var menuItems = [
-		{class: 'icon icon-data leap-interactive', href: 'view1', name: 'View 1'},
-		{class: 'icon icon-location leap-interactive', href: 'view2', name: 'View 2'}
+		{class: 'icon icon-data leap-interactive', href: '/view1', name: 'View 1'},
+		{class: 'icon icon-location leap-interactive', href: '/view2', name: 'View 2'}
 	];
-	
+
+	var _getPageIndex;
+	(_getPageIndex = function () {
+		for (var i = 0; i < menuItems.length; i++) {
+			if(menuItems[i].href == $location.path()){
+				menuItems.cursor = i;
+			}
+		};
+	})()
 
 	return {
 
 		getItems: function () {
 			return menuItems;
 		},
+
+		getPageIndex: _getPageIndex,
 
 		getCurrentPage: function () {
 			return menuItems.current;
@@ -102,20 +111,27 @@ angular.module('myApp.services')
 
 		goNextPage: function () {
 			if (menuItems.next()){
-				console.log(menuItems.current());			
+				//console.log($('[ng-view]'));
+				$('.pt-perspective').removeClass('prev-page');
+				$('.pt-perspective').addClass('next-page');
+				console.log(menuItems.current());
 				$location.path(menuItems.current().href);
 			}
 		},
 
 		goPrevPage: function () {
 			if (menuItems.prev()){
-				console.log(menuItems.current());				
+				//console.log(menuItems.current());
+				$('.pt-perspective').removeClass('next-page');
+				$('.pt-perspective').addClass('prev-page');
 				$location.path(menuItems.current().href);
 			}
 		},
 
-		goToPage: function (page) {
-			$location.path(page.href);
+		goToPage: function (index) {
+			// $location.path(menuItems[index].href);
+			if (menuItems.cursor > index) this.goPrevPage();
+			else this.goNextPage();
 		},
 
 		openMenu: function () {

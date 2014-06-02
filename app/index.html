@@ -100,9 +100,9 @@
 
 				<ul>
 					<li ng-repeat="item in menuItems">
-						<a ng-class="item.class" ng-click="goToPage(item)" href="">{{item.name}}</a>
+						<a ng-class="item.class" ng-click="goToPage($index)" href="">{{item.name}}</a>
 					</li>
-					<li><a id="st-close-menu" ng-click="closeMenu()" href="" class="icon icon-wallet leap-cursor-grabbing">Close Menu</a></li>
+					<li><a ng-click="closeMenu()" href="" class="icon icon-wallet leap-cursor-grabbing">Close Menu</a></li>
 				</ul>
 			</div>
 	    </nav>
@@ -111,8 +111,8 @@
 	    <div class="st-pusher">
 
             <!-- Main content -->
-            <div class="pt-perspective">
-              <div ng-view class="view pt-page-rotateCubeTopOut pt-page-rotateCubeTopIn"></div>
+            <div class="pt-perspective prev-page">
+              <div ng-view class="view pt-page-rotateCubeTopOut pt-page-rotateCubeTopIn pt-page-rotateCubeBottomOut pt-page-rotateCubeBottomIn"></div>
             </div>
 
             <div ng-click="closeMenu()" class="st-over-layer"></div>

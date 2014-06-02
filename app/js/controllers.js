@@ -8,23 +8,23 @@ angular.module('myApp.controllers', [])
 	$scope.menuItems = MenuService.getItems();
 
 	$scope.$on('leap-swipe-up', function () {
-		$scope.$apply(MenuService.goNextPage());			
+		$scope.$apply(MenuService.goNextPage());
 	});
-	
-	$scope.$on('leap-swipe-down', function () {		
-		$scope.$apply(MenuService.goPrevPage());			
+
+	$scope.$on('leap-swipe-down', function () {
+		$scope.$apply(MenuService.goPrevPage());
 	});
 
 	$scope.$on('leap-swipe-right', function () {
-		//MenuService.openMenu();			
+		//MenuService.openMenu();
 	});
 
 	$scope.$on('leap-swipe-left', function () {
-		//MenuService.closeMenu();			
+		//MenuService.closeMenu();
 	});
 
 	$scope.$on('leap-screenTap', function () {
-		MenuService.toggleMenu();			
+		MenuService.toggleMenu();
 	});
 
 	$scope.goToPage = function (page) {
@@ -75,11 +75,11 @@ angular.module('myApp.controllers', [])
 		var owl = $("#owl-example").data('owlCarousel');
 
 		$scope.$on('leap-swipe-right', function () {
-			owl.prev();		
+			owl.prev();
 		});
 
 		$scope.$on('leap-swipe-left', function () {
-			owl.next();		
+			owl.next();
 		});
 	},0);
 })

@@ -33,7 +33,8 @@
 	transform-origin: 100% 50%;
 	animation: rotateCubeRightIn .6s both ease-in;
 }
-.pt-page-rotateCubeTopOut.ng-leave{
+
+.next-page .pt-page-rotateCubeTopOut.ng-leave{
 	 z-index:9999;
 	-webkit-transform-origin: 50% 100%;
 	-webkit-animation: rotateCubeTopOut .6s both ease-in;
@@ -43,7 +44,7 @@
 	animation: rotateCubeTopOut .6s both ease-in;
 }
 
-.pt-page-rotateCubeTopIn.ng-enter{
+.next-page .pt-page-rotateCubeTopIn.ng-enter{
 	z-index:8888;
 	-webkit-transform-origin: 50% 0%;
 	-webkit-animation: rotateCubeTopIn .6s both ease-in;
@@ -52,7 +53,8 @@
 	transform-origin: 50% 0%;
 	animation: rotateCubeTopIn .6s both ease-in;
 }
-.pt-page-rotateCubeBottomOut {
+.prev-page .pt-page-rotateCubeBottomOut.ng-leave {
+	z-index:9999;
 	-webkit-transform-origin: 50% 0%;
 	-webkit-animation: rotateCubeBottomOut .6s both ease-in;
 	-moz-transform-origin: 50% 0%;
@@ -60,7 +62,8 @@
 	transform-origin: 50% 0%;
 	animation: rotateCubeBottomOut .6s both ease-in;
 }
-.pt-page-rotateCubeBottomIn {
+.prev-page .pt-page-rotateCubeBottomIn.ng-enter {
+	z-index:8888;
 	-webkit-transform-origin: 50% 100%;
 	-webkit-animation: rotateCubeBottomIn .6s both ease-in;
 	-moz-transform-origin: 50% 100%;
