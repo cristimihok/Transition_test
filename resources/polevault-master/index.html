@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Leap Test</title>
+		<script src="leapjs/leap.js"></script>
+		<script src="lib/sylvester.src.js"></script>
+		<script src="lib/require.js"></script>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+	<script type="text/javascript">
+		
+		// make sylvester approximate
+		Sylvester.precision = 0.01;
+		
+		requirejs(['polevault'], function( polevault ) {
+			polevault.on('*', function( type ){
+				if ( type !== 'frame' ) {
+					console.log.apply(console, arguments);
+				}
+			})
+		});
+	</script>
+</html>

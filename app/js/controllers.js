@@ -16,11 +16,15 @@ angular.module('myApp.controllers', [])
 	});
 
 	$scope.$on('leap-swipe-right', function () {
-		MenuService.openMenu();			
+		//MenuService.openMenu();			
 	});
 
 	$scope.$on('leap-swipe-left', function () {
-		MenuService.closeMenu();			
+		//MenuService.closeMenu();			
+	});
+
+	$scope.$on('leap-screenTap', function () {
+		MenuService.toggleMenu();			
 	});
 
 	$scope.goToPage = function (page) {
@@ -70,16 +74,17 @@ angular.module('myApp.controllers', [])
 
 		var owl = $("#owl-example").data('owlCarousel');
 
-		setInterval(function () {
-			owl.next();
-		}, 2000)
+		$scope.$on('leap-swipe-right', function () {
+			owl.prev();		
+		});
+
+		$scope.$on('leap-swipe-left', function () {
+			owl.next();		
+		});
 	},0);
 })
 
 .controller('View2', function($scope, $location) {
 	$scope.cls = 'view2';
 
-	$scope.changePage = function () {
-		$location.path('/view1')
-	}
 });
