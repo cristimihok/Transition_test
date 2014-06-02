@@ -146,10 +146,10 @@
 	border-color: white;
 	background: white;
 	overflow: hidden;
+	opacity: 1;
 	transition: opacity .5s ease-out;
 	-moz-transition: opacity .5s ease-in;
-	-webkit-transition: opacity 2.5s ease-in;
-	-webkit-transition: left .5s ease-in;
+	-webkit-transition: opacity .5s ease-in;
 	-o-transition: opacity .5s ease-out;
 }
 
