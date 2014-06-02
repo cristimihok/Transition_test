@@ -16,7 +16,8 @@ maxCursors: "5"
       <a href="{{ site.repo }}" class="btn btn-outline btn-lg leap-interactive">Get Code (Github)</a>
     </p>
   </div>
- 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="dist\js\leap.js"></script>
 </main>
  <div class="container">
 <h2>
@@ -112,11 +113,11 @@ And plug your Leap in to start.</h2>
     controller.on( 'frame' , function(frame){
 
 	  //Clears the canvas so we are not drawing multiple frames	
-     
+    
        c.clearRect( 0 , 0 , width , height );
  // Gets the number of fingers in each frame
       var numberOfFingers = Leap.Pointable.length;
-
+      console.log( Leap.Pointable.length);
       // Defines the font shape and size
       c.font = "30px Arial";
 

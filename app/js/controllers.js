@@ -3,28 +3,41 @@
 
 angular.module('myApp.controllers', [])
 
-.controller('MainCtrl', function ($scope) {
+.controller('MainCtrl', function ($scope, $location, LeapService, MenuService) {
+
+	$scope.menuItems = MenuService.getItems();
+
+	$scope.$on('leap-swipe-up', function () {
+		$scope.$apply(MenuService.goNextPage());			
+	});
+	
+	$scope.$on('leap-swipe-down', function () {		
+		$scope.$apply(MenuService.goPrevPage());			
+	});
+
+	$scope.$on('leap-swipe-right', function () {
+		MenuService.openMenu();			
+	});
+
+	$scope.$on('leap-swipe-left', function () {
+		MenuService.closeMenu();			
+	});
+
+	$scope.goToPage = function (page) {
+		MenuService.goToPage(page);
+	}
 
 	$scope.toggleMenu = function () {
-		$('#st-container').toggleClass('st-menu-open');
+		MenuService.toggleMenu();
 	}
 
 	$scope.openMenu = function () {
-		setTimeout(function(){
-			$('#st-container').addClass('st-menu-open');
-		},200)
+		MenuService.openMenu();
 	}
 
 	$scope.closeMenu = function () {
-		setTimeout(function(){
-			$('#st-container').removeClass('st-menu-open');
-		},500)
+		MenuService.closeMenu();
 	}
-
-	$scope.menuItems = [
-		{class: 'icon icon-data', href: '#view1', name: 'View 1'},
-		{class: 'icon icon-location', href: '#view2', name: 'View 2'}
-	]
 })
 
 .controller('View1', function($scope, $location) {

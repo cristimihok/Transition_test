@@ -19,8 +19,6 @@
 	<link rel="stylesheet" href="css/Bootstrap/bootstrap.css" />
 	<link rel="stylesheet" href="css/Bootstrap/bootstrap-theme.css" />
 
-
-
 	<!-- PAGE TRANSITION CSS -->
 	<!-- <link rel="stylesheet" href="css/PageTransitions/animations.css" /> -->
 	<link rel="stylesheet" href="css/PageTransitions/page.cube.transition.css" />
@@ -43,7 +41,7 @@
 
 	<!-- LEAP -->
 	<script src="lib/leap.js"></script>
-	<script src="lib/leapstrap.js"></script>
+	<script src="lib/leap-manager.js"></script>
 
 	<!-- OWL CAROUSEL -->
 	<script src="lib/owl.carousel.js"></script>
@@ -52,6 +50,11 @@
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular/angular-route.js"></script>
 	<script src="lib/angular/angular-animate.js"></script>
+
+	<!-- CUSTOM MODULES -->
+	<script src="js/services.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/filters.js"></script>
 
 	<!-- SIDEBAR -->
 	<script src="lib/modernizr.custom.js"></script>
@@ -62,10 +65,22 @@
 	<!-- MAIN ENTRY -->
 	<script src="js/app.js"></script>
 
-	<!-- CUSTOM MODULES -->
-	<script src="js/services.js"></script>
-	<script src="js/controllers.js"></script>
-	<script src="js/filters.js"></script>
+	<script type="text/javascript">
+		Array.prototype.next = function() {
+		    if (!((this.cursor + 1) in this)) return false;
+		    return this[++this.cursor];
+		};
+		Array.prototype.prev = function() {
+		    if (!((this.cursor - 1) in this)) return false;
+		    return this[--this.cursor];
+		};
+		Array.prototype.current = function () {
+			if (!(this.cursor in this)) return false;
+			return this[this.cursor];
+		}
+		Array.prototype.cursor = 0;
+
+	</script>
 
 
 
@@ -85,9 +100,9 @@
 
 				<ul>
 					<li ng-repeat="item in menuItems">
-						<a ng-class="item.class" ng-href="{{item.href}}">{{item.name}}</a>
+						<a ng-class="item.class" ng-click="goToPage(item)" href="">{{item.name}}</a>
 					</li>
-					<li><a id="st-close-menu" ng-click="toggleMenu()" href="#view2" class="icon icon-wallet">Close Menu</a></li>
+					<li><a id="st-close-menu" ng-click="toggleMenu()" href="#view2" class="icon icon-wallet leap-cursor-grabbing">Close Menu</a></li>
 				</ul>
 			</div>
 	    </nav>
@@ -100,7 +115,7 @@
               <div ng-view class="view pt-page-rotateCubeTopOut pt-page-rotateCubeTopIn"></div>
             </div>
 
-            <div class="st-over-layer"></div>
+            <div ng-click="closeMenu()" class="st-over-layer"></div>
 
 	    </div>
 

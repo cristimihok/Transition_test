@@ -2,12 +2,13 @@
 /* http://docs.angularjs.org/#!angular.service */
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['ngRoute', 'ngAnimate', 'myApp.filters', 'myApp.services', 'myApp.controllers'])
-.run(function ($rootScope) {
+angular.module('myApp', ['ngRoute', 'ngAnimate', 'myApp.services', 'myApp.filters', 'myApp.controllers'])
+.run(function ($rootScope, LeapService) {
 	// $rootScope.$on('$locationChangeSuccess', function() {
 	// 	alert('CHANGE')
 	// })
 })
+
 .config(function ($routeProvider) {
 	$routeProvider
 	.when('/view1', {
@@ -24,15 +25,8 @@ angular.module('myApp', ['ngRoute', 'ngAnimate', 'myApp.filters', 'myApp.service
 		redirectTo: '/view1'
 	});
 
-	$('.st-pusher .st-over-layer').click(function(){
-		$('#st-container').removeClass('st-menu-open');
-	})
+	
 
-	LeapManager.init({
-		maxCursors:5,
-		enableMetaGestures: true,
-		enableDefaultMetaGestureActions: true
-	});
 });
 
 

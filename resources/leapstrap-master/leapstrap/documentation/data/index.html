@@ -27,9 +27,9 @@
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
 <script>window.jQuery || document.write('<script src="/dist/js/jquery.js">\x3C/script>')</script>
-<script src="//js.leapmotion.com/0.3.0-beta3/leap.js"></script>
+<script src="../js/leap.js"></script>
 <!-- need to find code to localise -->
 <!-- <script>window.BaseConnection || document.write('<script src="/dist/js/leap.js">\x3C/script>')</script> -->
 <script src="../dist/js/leapstrap.js"></script>
@@ -135,8 +135,9 @@
     
       
       var controller = new Leap.Controller({enableGestures: true});
-      controller.on('deviceFrame', function(frame_instance) {
+      controller.on('frame', function(frame_instance) {
         latestFrame = frame_instance;
+        console.log('latestFrame');
         document.getElementById('out').innerHTML = (pausedFrame ? "<p><b>PAUSED</b></p>" : "") + "<div>"+(pausedFrame || latestFrame).dump()+"</div>";
       });
       
@@ -162,6 +163,9 @@
       });
       controller.on('deviceDisconnected', function() {
           console.log("deviceDisconnected");
+      });
+      controller.on('gesture', function() {
+          console.log("swipe");
       });
     </script>
         </div>
@@ -230,7 +234,7 @@
 </script>
 <!-- Analytics
 ================================================== -->
-<script>
+<!--<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -239,7 +243,7 @@
   ga('create', 'UA-45024155-1', 'wilkesalex.github.io');
   ga('send', 'pageview');
 
-</script>
+</script> -->
 
 
   </body>
